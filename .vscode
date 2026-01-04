@@ -1,0 +1,7 @@
+{
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "eslint.validate": ["javascript"],
+    "files.autoSave": "onFocusChange",
+    "javascript.suggest.autoImports": true
+}

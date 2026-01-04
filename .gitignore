@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Logi
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+
+# VSCode
+.vscode/
+
+# Prettier / ESLint cache
+.prettiercache
+.eslintcache
+
+# Build / dist (jeśli będziesz budować frontend w przyszłości)
+dist/
+build/
