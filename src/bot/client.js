@@ -1,4 +1,4 @@
-import { Client, Collection, Events, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
 import fs from 'fs';
 import path from 'path';
 import { env } from '../config/env.js';
@@ -24,27 +24,25 @@ for (const file of commandFiles) {
     const fileUrl = pathToFileURL(filePath).href;
     const { data, execute } = await import(fileUrl);
     client.commands.set(data.name, { data, execute });
-}
+};
 
-// Event: bot zalogowany
-client.once(Events.ClientReady, readyClient => {
-    console.log(`Zalogowano jako ${readyClient.user.tag}`);
-});
+// Dynamiczne ładowanie eventów
+const eventsPath = path.join('src', 'bot', 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
-// Event interakcji slash command
-client.on(Events.InteractionCreate, async interaction => {
-    if (!interaction.isCommand()) return;
+for (const file of eventFiles) {
+    const filePath = path.join(eventsPath, file);
+    const fileUrl = pathToFileURL(filePath).href;
 
-    const command = client.commands.get(interaction.commandName);
-    if (!command) return;
-    
-    try {
-        await command.execute(interaction);
-    } catch (error) {
-        console.error(`Błąd przy wykonywaniu komendy ${interaction.commandName}:`, error);
-        await interaction.reply({ content: 'Wystąpił błąd poczas wykonywania komendy:', ephemeral: true});
+    const event = (await import(fileUrl)).default;
+
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args));
     }
-});
+};
+
 // Wyeksportowanie komendy startBot i zalogowanie bota tokenem
 export const startBot = () => {
     client.login(env.token);
