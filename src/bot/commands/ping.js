@@ -1,11 +1,10 @@
-import { SlashCommandBuilder } from "discord.js";
+import { SlashCommandBuilder } from 'discord.js';
 
 export const data = new SlashCommandBuilder()
-    .setName('ping')
-    .setDescription('Sprawdza czy bot odpowiada');
-
+  .setName('ping')
+  .setDescription('Sprawdza czy bot odpowiada');
 
 export async function execute(interaction) {
-    // wysyła wiadomość na komende /ping
-    await interaction.reply('Pong!');
-};
+  // wysyła wiadomość na komende /ping
+  await interaction.reply('Pong!');
+}
