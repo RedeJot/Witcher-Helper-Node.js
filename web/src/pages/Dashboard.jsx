@@ -1,10 +1,17 @@
 import ReactionRolesForm from '../components/ReactionRolesForm';
+import RulesForm from '../components/RulesForm';
 
 export default function Dashboard() {
   return (
-    <div style={{ padding: 24 }}>
-      <h1>Witch Helper Panel</h1>
-      <ReactionRolesForm />
+    <div className="dashboard-layout" style={{ display: 'flex'}}>
+      <div className="container-ReactionRolesPanel">
+        <h1>Reaction Roles</h1>
+        <ReactionRolesForm />
+      </div>
+      <div className="container-RulesPanel">
+        <h1>Rules</h1>
+        <RulesForm />
+      </div>
     </div>
   );
 }

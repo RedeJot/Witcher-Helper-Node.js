@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import guildsRoutes from './routes/guilds.routes.js';
 import reactionRolesRoutes from './routes/reactionRoles.routes.js';
+import rules from './routes/rules.routes.js';
 import configRoutes from './routes/config.routes.js';
 
 export const startApi = () => {
@@ -22,6 +23,8 @@ export const startApi = () => {
 
   // Wczytanie listy ról
   app.use('/api/reaction-roles', reactionRolesRoutes);
+
+  app.use('/api/rules', rules);
 
   // Wczytanie listy kanałów
   app.use('/api/guilds', guildsRoutes);

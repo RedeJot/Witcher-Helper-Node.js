@@ -1,58 +1,37 @@
 # =========================
-# Node / npm
+# Systemowe i IDE
 # =========================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# =========================
-# Environment variables
-# =========================
-.env
-.env.local
-.env.*.local
-
-# =========================
-# Build / dist
-# =========================
-dist/
-build/
-
-# =========================
-# Vite / React
-# =========================
-web/node_modules/
-web/dist/
-
-# =========================
-# Runtime / data
-# =========================
-data/*.json
-data/*.db
-
-# =========================
-# OS / Editor
-# =========================
+.idea/
+.vscode/
 .DS_Store
 Thumbs.db
 
 # =========================
-# IDE
+# Node.js (Główny projekt)
 # =========================
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-
-# =========================
-# Logs
-# =========================
-logs/
+node_modules/
+npm-debug.log*
 *.log
+.env
+.env.local
 
 # =========================
-# Cache
+# Dane bota (BARDZO WAŻNE)
+# =========================
+# Ignorujemy bazę danych i logi, żeby nie nadpisywać ich na GitHubie
+data/warning.json
+logs/
+
+# =========================
+# Frontend (Folder /web)
+# =========================
+web/node_modules/
+web/dist/
+web/.env
+web/.env.local
+
+# =========================
+# Inne
 # =========================
 .cache/
 .tmp/

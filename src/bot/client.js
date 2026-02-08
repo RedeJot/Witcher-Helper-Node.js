@@ -24,8 +24,14 @@ const commandFiles = fs
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
   const fileUrl = pathToFileURL(filePath).href;
-  const { data, execute } = await import(fileUrl);
-  client.commands.set(data.name, { data, execute });
+  try {
+    const { data, execute } = await import(fileUrl);
+    client.commands.set(data.name, { data, execute });
+    console.log(`Successfully loaded ${commandFiles.length} commands.`);
+  } catch (error) {
+    console.error(`Error loading command ${file}:`, error);
+  }
+
 }
 
 // Dynamiczne ładowanie eventów
