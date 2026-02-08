@@ -1,5 +1,6 @@
+import { env } from '../../../src/config/env.js';
 export async function createReactionRoles(data) {
-  const response = await fetch('http://localhost:3000/api/reaction-roles', {
+  const response = await fetch(`${env.vite}/api/reaction-roles`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,6 +1,7 @@
+import { env } from '../../../src/config/env.js';
 // Klient API dla ról
 export async function fetchGuildRoles(guildId) {
-  const res = await fetch(`http://localhost:3000/api/guilds/${guildId}/roles`);
+  const res = await fetch(`${env.vite}/api/guilds/${guildId}/roles`);
   if (!res.ok) {
     throw new Error('Nie udało się pobrać listy ról');
   }

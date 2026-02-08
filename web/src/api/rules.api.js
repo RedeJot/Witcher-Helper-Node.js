@@ -1,5 +1,6 @@
+import { env } from '../../../src/config/env.js';
 export async function createRules(data) {
-  const response = await fetch('http://localhost:3000/api/rules', {
+  const response = await fetch(`${env.vite}/api/rules`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

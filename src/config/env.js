@@ -5,4 +5,5 @@ export const env = {
   port: process.env.PORT ?? 3000,
   guildID: process.env.GUILD_ID,
   clientID: process.env.CLIENT_ID,
+  vite: process.env.VITE_URL,
 };

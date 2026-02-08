@@ -4,6 +4,7 @@ import guildsRoutes from './routes/guilds.routes.js';
 import reactionRolesRoutes from './routes/reactionRoles.routes.js';
 import rules from './routes/rules.routes.js';
 import configRoutes from './routes/config.routes.js';
+import { env } from '../config/env.js';
 
 export const startApi = () => {
   const app = express();
@@ -12,7 +13,7 @@ export const startApi = () => {
   // Cors wymagany dla przeglądarki
   app.use(
     cors({
-      origin: 'http://localhost:5173',
+      origin: env.vite,
     }),
   );
 

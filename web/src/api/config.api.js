@@ -1,4 +1,5 @@
+import { env } from '../../../src/config/env.js';
 export async function fetchConfig() {
-  const res = await fetch('http://localhost:3000/api/config');
+  const res = await fetch(`${env.vite}/api/config`);
   return res.json();
 }
