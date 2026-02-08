@@ -12,7 +12,13 @@ export const startApi = () => {
   // Cors wymagany dla przeglądarki
   app.use(
     cors({
-      origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
+      origin: [
+        process.env.FRONTEND_URL,
+        'http://localhost:5173',
+        'http://192.168.1.4:5173',
+      ].filter(Boolean),
+      methods: ['GET', 'POST', 'PUT', 'DELETE'],
+      credentials: true,
     }),
   );
   app.use(express.json());
