@@ -15,17 +15,14 @@ export const startApi = () => {
       origin: process.env.FRONTEND_ORIGIN || 'http://localhost:5173',
     }),
   );
+  app.use(express.json());
 
   // Wczytanie GUILD_ID z serwera
   app.use('/api/config', configRoutes);
-
-  app.use(express.json());
-
   // Wczytanie listy ról
   app.use('/api/reaction-roles', reactionRolesRoutes);
-
+  // Wczytanie listy reguł
   app.use('/api/rules', rules);
-
   // Wczytanie listy kanałów
   app.use('/api/guilds', guildsRoutes);
 
