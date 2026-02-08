@@ -1,3 +1,5 @@
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
 export async function apiFetch(endpoint, options = {}) {
   const url = `${BASE_URL}${endpoint}`;
   const response = await fetch(url, {
