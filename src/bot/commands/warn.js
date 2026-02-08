@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits } from 'discord.js';
+import { SlashCommandBuilder, PermissionFlagsBits} from 'discord.js';
 import { addWarning } from '../services/warn.service.js';
 
 export const data = new SlashCommandBuilder()
