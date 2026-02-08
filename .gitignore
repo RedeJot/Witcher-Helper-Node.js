@@ -36,3 +36,4 @@ web/.env.local
 # =========================
 .cache/
 .tmp/
+package-lock.json
