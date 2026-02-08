@@ -1,17 +1,8 @@
-import { env } from '../../../src/config/env.js';
+import { apiFetch } from './client.js';
+
 export async function createRules(data) {
-  const response = await fetch(`${env.vite}/api/rules`, {
+  return apiFetch(`/api/rules`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify(data),
   });
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw json;
-  }
-  return json;
 }
