@@ -13,6 +13,7 @@ export default {
         const roleId = customId.split(':')[1];
         const member = interaction.member;
         const role = interaction.guild.roles.cache.get(roleId);
+        const roleName = member.guild.roles.cache.get(roleId)?.name;
 
         if (!role) {
           console.log('Nie można znaleźć roli.');
@@ -32,7 +33,7 @@ export default {
               });
             } else {
               await member.roles.remove(roleId);
-              console.log(`Usunięto rolę: <@&${roleId} dla @${member.user.tag}`);
+              console.log(`Usunięto rolę: @${roleName} dla @${member.user.tag}`);
               return interaction.reply({ // Użyj return, żeby nie szukać dalej komend
                 content: `Removed role: <@&${roleId}> | Usunięto rolę: <@&${roleId}>.`,
                 flags: MessageFlags.Ephemeral,
@@ -45,7 +46,7 @@ export default {
               : `Role given: <@&${roleId}> | Nadano rolę: <@&${roleId}>`;
             const msgLog = customId.startsWith('rule:')
               ? `Użytkownik @${member.user.tag} zaakceptował zasady.`
-              : `Nadano rolę: <@&${roleId}> dla ${member.user.tag}`;
+              : `Nadano rolę: @${roleName} dla @${member.user.tag}`;
             console.log(msgLog);
 
             return interaction.reply({
