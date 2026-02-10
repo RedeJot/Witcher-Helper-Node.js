@@ -8,14 +8,13 @@ import configRoutes from './routes/config.routes.js';
 export const startApi = () => {
   const app = express();
   const port = process.env.PORT || 3000;
+  const frontEndUrl = process.env.FRONTEND_URL;
 
   // Cors wymagany dla przeglądarki
   app.use(
     cors({
       origin: [
-        process.env.FRONTEND_URL,
-        'http://localhost:5173',
-        'http://192.168.1.4:5173',
+        frontEndUrl,
       ].filter(Boolean),
       methods: ['GET', 'POST', 'PUT', 'DELETE'],
       credentials: true,

@@ -163,9 +163,8 @@ export default function ReactionRolesForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Reaction Roles</h2>
-
-      {/* SELECT KANAŁU */}
+        <div className="glass-container">
+          <h2>Treść wiadomości i wybór kanału</h2>
       <select
         value={channelId}
         onChange={(e) => setChannelId(e.target.value)}
@@ -186,6 +185,7 @@ export default function ReactionRolesForm() {
         maxLength={MESSAGE_MAX_LENGTH}
         onChange={(e) => setMessage(e.target.value)}
       />
+      </div>
 
       <h3>Przyciski</h3>
 

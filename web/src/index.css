@@ -11,6 +11,23 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+}
+
+textarea {
+  min-height: 150px;
+}
+
+select {
+  padding: 0.4em;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 a {
@@ -66,3 +83,211 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  margin: 5px;
+  background: radial-gradient(circle at bottom, #2c178a, #2c0f4c);
+  border-radius: 20px;
+  border: 1px solid #5132B1;
+  box-shadow: 10px 15px 15px #000000;
+}
+
+.glass-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  margin: 10px;
+  background: radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.02) 40%, rgba(255, 255, 255, 0.2) 150%);
+  backdrop-filter: blur(10px);
+  box-shadow: 10px 15px 20px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  border: 1px solid #5132B1;
+  transition: all 0.6s ease-in-out;
+  overflow: hidden;
+}
+
+/*.select-container::before {*/
+/*  content: "";*/
+/*  position: absolute;*/
+/*  top: 10px; left: 10px; right: 10px; bottom: 10px; !* Nieco mniejszy niż oryginał *!*/
+/*  background: rgba(0, 0, 0, 0.2);*/
+/*  filter: blur(25px); !* Rozmywamy samo tło pseudo-elementu *!*/
+/*  z-index: -1; !* Wrzucamy go pod spód *!*/
+/*  border-radius: 15px;*/
+/*}*/
+
+.rules-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    /*border: 1px solid #5132B1;
+    box-shadow: 10px 5px 15px #000000;*/
+}
+
+.rules-container.visible {
+  animation: goDown 1s ease-in-out forwards;
+}
+
+
+.rules-container.hidden {
+  animation: goUp 1s ease-in-out forwards;
+}
+
+.checkbox-text{
+    color: #ffffff;
+    margin-left: 10px;
+}
+/* From Uiverse.io by Tsiangana */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  background: transparent;
+  border-radius: 12px;
+  box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ios-checkbox {
+  --checkbox-size: 28px;
+  --checkbox-color: #3b82f6;
+  --checkbox-bg: #dbeafe;
+  --checkbox-border: #93c5fd;
+
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ios-checkbox input {
+  display: none;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.checkbox-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  border: 2px solid var(--checkbox-border);
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.checkbox-icon {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  color: white;
+  transform: scale(0);
+  transition: all 0.2s ease;
+}
+
+.check-path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  transition: stroke-dashoffset 0.3s ease 0.1s;
+}
+
+/* Checked State */
+.ios-checkbox input:checked + .checkbox-wrapper .checkbox-bg {
+  background: var(--checkbox-color);
+  border-color: var(--checkbox-color);
+}
+
+.ios-checkbox input:checked + .checkbox-wrapper .checkbox-icon {
+  transform: scale(1);
+}
+
+.ios-checkbox input:checked + .checkbox-wrapper .check-path {
+  stroke-dashoffset: 0;
+}
+
+/* Hover Effects */
+.ios-checkbox:hover .checkbox-wrapper {
+  transform: scale(1.05);
+}
+
+/* Active Animation */
+.ios-checkbox:active .checkbox-wrapper {
+  transform: scale(0.95);
+}
+
+/* Focus Styles */
+.ios-checkbox input:focus + .checkbox-wrapper .checkbox-bg {
+  box-shadow: 0 0 0 4px var(--checkbox-bg);
+}
+
+.ios-checkbox.red {
+  --checkbox-color: #ef4444;
+  --checkbox-bg: #fee2e2;
+  --checkbox-border: #fca5a5;
+}
+
+/* Animation */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.ios-checkbox input:checked + .checkbox-wrapper {
+  animation: bounce 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+@keyframes goDown {
+    from {
+      transform: translateY(50px);
+      max-height: 0;
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+}
+
+@keyframes goUp {
+    from {
+      transform: translateY(0px);
+      max-height: 1000px;
+      opacity: 1;
+    }
+    to {
+      transform: translateY(50px);
+      max-height: 0;
+      opacity: 0;
+    }
+}
+
+
+
+
+

@@ -27,11 +27,16 @@ for (const file of commandFiles) {
   try {
     const { data, execute } = await import(fileUrl);
     client.commands.set(data.name, { data, execute });
-    console.log(`Successfully loaded ${commandFiles.length} commands.`);
+    console.log(`Successfully loaded ${file} command.`);
   } catch (error) {
     console.error(`Error loading command ${file}:`, error);
   }
+}
 
+if (commandFiles.length > 0) {
+  console.log(`Successfully loaded ${commandFiles.length} commands.`);
+} else {
+  console.log('No command files found to load.');
 }
 
 // Dynamiczne ładowanie eventów
