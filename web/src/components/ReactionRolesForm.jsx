@@ -40,9 +40,6 @@ export default function ReactionRolesForm() {
     { label: '', roleId: '', buttonType: 'secondary' /*, emoji: ''*/ },
   ]);
 
-  // =========================
-  // STAŁE – LIMITY DISCORDA
-  // =========================
 
   // Maksymalna długość treści wiadomości Discord
   const MESSAGE_MAX_LENGTH = 2000;
@@ -50,9 +47,6 @@ export default function ReactionRolesForm() {
   // Maksymalna długość etykiety przycisku
   const BUTTON_LABEL_MAX_LENGTH = 80;
 
-  // =========================
-  // WALIDACJA FORMULARZA
-  // =========================
 
   // Sprawdza, czy formularz jest poprawny
   // Jeśli false – przycisk „Utwórz” jest zablokowany
@@ -68,9 +62,7 @@ export default function ReactionRolesForm() {
         b.roleId, // każdy przycisk ma rolę
     );
 
-  // =========================
   // EFFECT #1 – POBRANIE KONFIGURACJI
-  // =========================
 
   // Ten efekt uruchamia się TYLKO raz (przy starcie komponentu)
   // Pobiera guildId z backendu (np. z .env)
@@ -80,9 +72,7 @@ export default function ReactionRolesForm() {
     });
   }, []); // <-- pusta tablica = tylko raz
 
-  // =========================
   // EFFECT #2 – POBRANIE KANAŁÓW I RÓL
-  // =========================
 
   // Ten efekt uruchamia się ZA KAŻDYM RAZEM,
   // gdy zmieni się guildId
@@ -96,9 +86,7 @@ export default function ReactionRolesForm() {
     fetchGuildRoles(guildId).then(setRoles);
   }, [guildId]);
 
-  // =========================
   // FUNKCJE POMOCNICZE
-  // =========================
 
   // Aktualizuje konkretną właściwość przycisku (label / roleId)
   function updateButton(index, field, value) {
@@ -122,9 +110,7 @@ export default function ReactionRolesForm() {
     setButtons([{ label: '', roleId: '', buttonType: 'secondary' }]);
   }
 
-  // =========================
   // OBSŁUGA SUBMITU FORMULARZA
-  // =========================
 
   async function handleSubmit(e) {
     e.preventDefault(); // blokuje reload strony
@@ -157,9 +143,7 @@ export default function ReactionRolesForm() {
     }
   }
 
-  // =========================
   // RENDER (JSX)
-  // =========================
 
   return (
     <form onSubmit={handleSubmit}>
