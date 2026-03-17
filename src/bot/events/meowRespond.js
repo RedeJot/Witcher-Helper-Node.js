@@ -1,12 +1,16 @@
 import { Events, AttachmentBuilder, MessageFlags } from 'discord.js';
 
 const cooldowns = new Set();
+const AllowedChannels = ['1286785359652454444', '1287543811748135055']; // ID kanałów, na których bot może odpowiadać
 
 export default {
   name: Events.MessageCreate,
 
   async execute(message) {
     if (message.author.bot || message.system) return;
+
+
+    if (!AllowedChannels.includes(message.channel.id)) return; // Sprawdzenie, czy wiadomość pochodzi z dozwolonego kanału
 
     const botMention = new RegExp(`^<@!?${message.client.user.id}>$`);
 
